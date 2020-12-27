@@ -74,3 +74,8 @@ There is no issue with the above process. The computer does not know where the s
 It is unlucky, but not faulty. However, on the second iteration, the logic will become faulty. 
 The computer will still act as if it does not know which direction the ship is oriented (although a human would).
 It'll continue going down, up, left, right until the ship is sunk. This wastes 3 good turns. I'm still working on a solution to combat this issue.
+
+If you'd like to try the game out, please feel free!
+You'll need to have java installed on your computer, but besides that, it's fairly simple to run.
+
+~ Rakan Kandah
