@@ -43,9 +43,10 @@ O
 
 O
 H 
-H <-- Computer knows not to go down now (thanks to the T) and instead travels upward, marks a hit, followed by a miss. Now the ship is sunk.
+H <-- Computer knows not to go down now (thanks to the T) and instead travels upward, marks a hit, followed by a miss. 
 T
 O
+Now the ship is sunk.
 The computer knows a ship is sunk when there is a miss (O) on both ends. It is then safe for the computer to move on and select a new random position.
 There are more elegant ways of executing this algorithm (I'm sure), but this was what I'd imagined in my head. It made perfect sense to me, and so I went with it. 
 
