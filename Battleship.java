@@ -13,20 +13,20 @@ public class Battleship {
 
     public static void main(String[] args) throws InterruptedException {
         while(true){
-        Battleship battleship = new Battleship();
-        System.out.print("\t\t\t\t\t\t\t\t\t\t");
-        System.out.print("Enter your name: ");
-        String userName = scanner.nextLine();
-        System.out.print("\t\t\t\t\t\t\t\t\t\t");
-        System.out.print("This is " + userName + "'s board. X's represent your ships");
-        System.out.println();
+            Battleship battleship = new Battleship();
+            System.out.print("\t\t\t\t\t\t\t\t\t\t");
+            System.out.print("Enter your name: ");
+            String userName = scanner.nextLine();
+            System.out.print("\t\t\t\t\t\t\t\t\t\t");
+            System.out.print("This is " + userName + "'s board. X's represent your ships");
+            System.out.println();
 
-        battleship.playingTheGame();
-        System.out.println("Thanks for playing!\nHit 0 to quit, or 1 to play again.");
-        int val = scanner.nextInt();
-        if(val == 0)
-            break;
-        }
+            battleship.playingTheGame();
+            System.out.println("Thanks for playing!\nHit 0 to quit, or 1 to play again.");
+            int val = scanner.nextInt();
+            if(val == 0)
+                break;
+            }
     }
 
     // adding ships of varying length to the board
