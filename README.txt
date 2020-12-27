@@ -3,7 +3,6 @@ Battleship
 
 This Battleship game, developed by Rakan Kandah, was written in Java as a solo project. 
 The AI's algorithm is original, along with everything else in the code. 
-Note, the algorithm is not perfect (further proof that I am the sole developer). 
 
 How the AI works: 
 Getting a computer to think like a human is hard (and that's an understatement!). 
@@ -49,31 +48,6 @@ T
 O
 The computer knows a ship is sunk when there is a miss (O) on both ends. It is then safe for the computer to move on and select a new random position.
 There are more elegant ways of executing this algorithm (I'm sure), but this was what I'd imagined in my head. It made perfect sense to me, and so I went with it. 
-
-* * *  
-I mentioned earlier, the AI is not perfect. I need to work on fixing a logic error (demonstrated below). 
-
-X X X 
-^
-Computer first checks down.
-H X X 
-O
-Then up.
-O
-H X X 
-O
-Then left.
-  O
-O H X X 
-  O
-Finally, right.
-  O
-O H H X 
-  O
-There is no issue with the above process. The computer does not know where the second portion of the ship is located, so it has to go through all possibilities.
-It is unlucky, but not faulty. However, on the second iteration, the logic will become faulty. 
-The computer will still act as if it does not know which direction the ship is oriented (although a human would).
-It'll continue going down, up, left, right until the ship is sunk. This wastes 3 good turns. I'm still working on a solution to combat this issue.
 
 If you'd like to try the game out, please feel free!
 You'll need to have java installed on your computer, but besides that, it's fairly simple to run.

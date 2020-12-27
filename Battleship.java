@@ -12,15 +12,21 @@ public class Battleship {
 
 
     public static void main(String[] args) throws InterruptedException {
+        while(true){
         Battleship battleship = new Battleship();
-        System.out.print("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
+        System.out.print("\t\t\t\t\t\t\t\t\t\t");
         System.out.print("Enter your name: ");
         String userName = scanner.nextLine();
-        System.out.print("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
+        System.out.print("\t\t\t\t\t\t\t\t\t\t");
         System.out.print("This is " + userName + "'s board. X's represent your ships");
         System.out.println();
 
         battleship.playingTheGame();
+        System.out.println("Thanks for playing!\nHit 0 to quit, or 1 to play again.");
+        int val = scanner.nextInt();
+        if(val == 0)
+            break;
+        }
     }
 
     // adding ships of varying length to the board
@@ -133,6 +139,7 @@ public class Battleship {
 
 
     public void playingTheGame() {
+        boolean dimension_check = true;
         Random rand = new Random();
         String[][] userCopy = {{"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}};
         String[][] userVisible = {{"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}};
@@ -175,7 +182,7 @@ public class Battleship {
                 internalProcessing[i][j] = ("H");
                 v = i;
                 v2 = j;
-                if (i != 5 && !internalProcessing[i + 1][j].equals("O") && !internalProcessing[i + 1][j].equals("T")) {
+                if (dimension_check && i != 5 && !internalProcessing[i + 1][j].equals("O") && !internalProcessing[i + 1][j].equals("T")) {
                     i++;
                     while (internalProcessing[i][j].equals("H") && i != 5) {
                         computerVisible[i][j] = (ANSI_RED + "H" + ANSI_RESET);
@@ -184,7 +191,7 @@ public class Battleship {
                     }
                     continue;//skipping the users turn
 
-                } else if (i != 0 && !internalProcessing[i - 1][j].equals("O") && !internalProcessing[i - 1][j].equals("T")) {
+                } else if (dimension_check && i != 0 && !internalProcessing[i - 1][j].equals("O") && !internalProcessing[i - 1][j].equals("T")) {
                     i--;
                     while (internalProcessing[i][j].equals("H") && i != 0) {
                         computerVisible[i][j] = (ANSI_RED + "H" + ANSI_RESET);
@@ -200,6 +207,7 @@ public class Battleship {
                         internalProcessing[i][j] = "T";
                         j--;
                     }
+                    dimension_check = false; //horizontally oriented
                     continue;
 
                 } else if (j != 5 && !internalProcessing[i][j + 1].equals("O") && !internalProcessing[i][j + 1].equals("T")) {
@@ -209,6 +217,7 @@ public class Battleship {
                         internalProcessing[i][j] = "T";
                         j++;
                     }
+                    dimension_check = false; // horizontally oriented
                     continue;
 
                 } else {
@@ -226,6 +235,7 @@ public class Battleship {
                     i = v;
                     j = v2;
                 } else {
+                    dimension_check = true; // reset
                     while (internalProcessing[i][j].equals("O")) { //else (worse case only) find a new random position
                         i = rand.nextInt(6);
                         j = rand.nextInt(6);
