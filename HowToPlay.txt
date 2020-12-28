@@ -1,5 +1,6 @@
 ON MAC (In terminal)
 Type: brew install git
+If brew is not installed type this: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 Wait for git to install; then type: sudo apt install default-jdk
 
 ON WINDOWS 
