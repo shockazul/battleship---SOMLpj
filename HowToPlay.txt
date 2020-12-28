@@ -1,0 +1,11 @@
+ON MAC (In terminal)
+Type: brew install git
+Wait for git to install; then type: sudo apt install default-jdk
+
+ON WINDOWS 
+Git Install: https://git-scm.com/download/win
+Java Install: https://java.com/en/download/manual.jsp
+
+ON LINUX (In terminal)
+Type: apt-get install git 
+Wait for git to install; then type: sudo apt install default-jdk
