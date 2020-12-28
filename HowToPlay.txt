@@ -9,3 +9,7 @@ Java Install: https://java.com/en/download/manual.jsp
 ON LINUX (In terminal)
 Type: apt-get install git 
 Wait for git to install; then type: sudo apt install default-jdk
+
+After Git & java are installed, navigate to your desktop, then type: git clone https://github.com/SOMLpj/Battleship.git
+Wait for the repo to clone; when complete, type: java Battleship.java.
+Enjoy!
