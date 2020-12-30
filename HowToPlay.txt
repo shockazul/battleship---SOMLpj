@@ -1,16 +1,5 @@
-ON MAC (In terminal)
-Type: brew install git
-If brew is not installed type this: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-Wait for git to install; then type: brew cask install java
-
-ON WINDOWS 
-Git Install: https://git-scm.com/download/win
-Java Install: https://java.com/en/download/manual.jsp
-
-ON LINUX (In terminal)
-Type: apt-get install git 
-Wait for git to install; then type: sudo apt install default-jdk
-
-After Git & java are installed, navigate to your desktop (in terminal), then type: git clone https://github.com/SOMLpj/Battleship.git
-Wait for the repo to clone; when complete, navigate to the Battleship folder (still in terminal), then type: java Battleship.java.
-Enjoy!
+Clone the git repo.
+Navigate to the battleship folder (in terminal) 
+docker build -t battleship . 
+docker run -it battleship
+Enjoy! 
