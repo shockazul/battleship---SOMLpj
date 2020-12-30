@@ -51,6 +51,5 @@ The computer knows a ship is sunk when there is a miss (O) on both ends. It is t
 There are more elegant ways of executing this algorithm (I'm sure), but this was what I'd imagined in my head. It made perfect sense to me, and so I went with it. 
 
 If you'd like to try the game out, please feel free!
-You'll need to have java installed on your computer, but besides that, it's fairly simple to run.
 
 ~ Rakan Kandah
