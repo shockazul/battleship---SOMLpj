@@ -1,6 +1,2 @@
-(Note, you'll need to have docker installed)
-Clone the git repo.
-Navigate to the battleship folder (in terminal) 
-docker build -t battleship . 
-docker run -it battleship
-Enjoy! 
+If you're running linux, navigate to the run.sh file, copy and paste it into your terminal.
+Once the installations are complete, enjoy! 
