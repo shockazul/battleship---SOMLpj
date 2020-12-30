@@ -2,7 +2,6 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-
 public class Battleship {
     private static Scanner scanner = new Scanner(System.in);
     public static final String ANSI_RED = "\u001B[31m";
@@ -12,7 +11,7 @@ public class Battleship {
 
 
     public static void main(String[] args) throws InterruptedException {
-        while(true){
+        while (true) {
             Battleship battleship = new Battleship();
             System.out.print("\t\t\t\t\t\t\t\t\t\t");
             System.out.print("Enter your name: ");
@@ -24,82 +23,307 @@ public class Battleship {
             battleship.playingTheGame();
             System.out.println("Thanks for playing!\nHit 0 to quit, or 1 to play again.");
             int val = scanner.nextInt();
-            if(val == 0)
+            if (val == 0)
                 break;
-            }
+        }
     }
 
-    // adding ships of varying length to the board
     public String[][] creatingBoard() {
         String[][] gameBoard = {{"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}};
         Random rand = new Random();
-        //ships spawn in random positions
         int i = rand.nextInt(6);
         int j = rand.nextInt(6);
-        gameBoard[i][j] = "X";
-        i = rand.nextInt(6);
-        j = rand.nextInt(6);
-        for (int k = 0; k < 2; k++) {
-            int decider = (int) (Math.random() * 2 + 1);
-            if (decider == 1) { //deciding if the ship will be placed horizontally, or vertically
-                //ship length of 1
-                if (i <= 4 && !gameBoard[i + 1][j].equals("X")) {
-                    i++;
-                    gameBoard[i][j] = "X";
-                } else if (i >= 1 && !gameBoard[i - 1][j].equals("X")) {
-                    i--;
-                    gameBoard[i][j] = "X";
-                } else {
+        //length 3
+        while (true) {
+            int direction = rand.nextInt(2);
+            if (direction == 0) { //vertical
+                if (gameBoard[i][j].equals("X")) {
                     i = rand.nextInt(6);
                     j = rand.nextInt(6);
-                    k--;
+                    continue;
                 }
-                //ship length of 2
-            } else {
-                if (j <= 4 && !gameBoard[i][j + 1].equals("X")) {
-                    j++;
-                    gameBoard[i][j] = "X";
-                } else if (j >= 1 && !gameBoard[i][j - 1].equals("X")) {
-                    j--;
-                    gameBoard[i][j] = "X";
+                if (i == 5) {
+                    if (gameBoard[i - 1][j].equals("X"))
+                        continue;
+
+                    if (gameBoard[i - 2][j].equals("X"))
+                        continue;
+                    for (int k = i; k >= i - 2; k--)
+                        gameBoard[k][j] = "X";
+                    break;
+                }
+                if (i == 0) {
+                    if (gameBoard[i + 1][j].equals("X"))
+                        continue;
+
+                    if (gameBoard[i + 2][j].equals("X"))
+                        continue;
+
+                    for (int k = i; k <= i + 2; k++)
+                        gameBoard[k][j] = "X";
+                    break;
+                }
+                if (i == 4) {
+                    if (gameBoard[i - 1][j].equals("X"))
+                        continue;
+                    if (gameBoard[i - 2][j].equals("X") && gameBoard[i + 1][j].equals("X"))
+                        continue;
+                    int rand_check = rand.nextInt(2);
+
+                    if (rand_check == 1) {
+                        for (int k = i; k >= i - 2; k--)
+                            gameBoard[k][j] = "X";
+                        break;
+                    } else {
+                        int k = i;
+                        gameBoard[k][j] = "X";
+                        gameBoard[++k][j] = "X";
+                        gameBoard[--i][j] = "X";
+                        break;
+                    }
+                }
+                if (i == 1) {
+
+                    if (gameBoard[i + 1][j].equals("X"))
+                        continue;
+                    if (gameBoard[i + 2][j].equals("X") && gameBoard[i - 1][j].equals("X"))
+                        continue;
+                    int rand_check = rand.nextInt(2);
+
+                    if (rand_check == 1) {
+                        for (int k = i; k <= i + 2; k++)
+                            gameBoard[k][j] = "X";
+                        break;
+                    } else {
+                        int k = i;
+                        gameBoard[k][j] = "X";
+                        gameBoard[++k][j] = "X";
+                        gameBoard[--i][j] = "X";
+                        break;
+                    }
+                }
+
+                if (gameBoard[i - 1][j].equals("X") && gameBoard[i + 1][j].equals("X"))
+                    continue;
+                if (gameBoard[i - 2][j].equals("X") && gameBoard[i + 2][j].equals("X"))
+                    continue;
+                int rand_check = rand.nextInt(2);
+                if (rand_check == 1) {
+                    for (int k = i; k <= i + 2; k++)
+                        gameBoard[k][j] = "X";
+                    break;
                 } else {
+                    for (int k = i; k >= i - 2; k--)
+                        gameBoard[k][j] = "X";
+                    break;
+                }
+            } else {
+                //horizontal
+                if (gameBoard[i][j].equals("X")) {
                     i = rand.nextInt(6);
                     j = rand.nextInt(6);
-                    k--;
+                    continue;
+                }
+                if (j == 5) {
+                    if (gameBoard[i][j - 1].equals("X"))
+                        continue;
+
+                    if (gameBoard[i][j - 2].equals("X"))
+                        continue;
+
+                    for (int k = j; k >= j - 2; k--)
+                        gameBoard[i][k] = "X";
+                    break;
+                }
+                if (j == 0) {
+                    if (gameBoard[i][j + 1].equals("X"))
+                        continue;
+
+                    if (gameBoard[i][j + 2].equals("X"))
+                        continue;
+
+                    for (int k = j; k <= j + 2; k++)
+                        gameBoard[i][k] = "X";
+                    break;
+                }
+                if (j == 4) {
+                    if (gameBoard[i][j - 1].equals("X"))
+                        continue;
+                    if (gameBoard[i][j - 2].equals("X") && gameBoard[i][j + 1].equals("X"))
+                        continue;
+                    int rand_check = rand.nextInt(2);
+                    ;
+                    if (rand_check == 1) {
+                        for (int k = j; k >= j - 2; k--)
+                            gameBoard[i][k] = "X";
+                        break;
+                    } else {
+                        int k = j;
+                        gameBoard[i][k] = "X";
+                        gameBoard[i][++k] = "X";
+                        gameBoard[i][--j] = "X";
+                        break;
+                    }
+                }
+                if (j == 1) {
+                    if (gameBoard[i][j + 1].equals("X"))
+                        continue;
+                    if (gameBoard[i][j + 2].equals("X") && gameBoard[i][j - 1].equals("X"))
+                        continue;
+                    int rand_check = rand.nextInt(2);
+                    ;
+                    if (rand_check == 1) {
+                        for (int k = j; k <= j + 2; k++)
+                            gameBoard[i][k] = "X";
+                        break;
+                    } else {
+                        int k = j;
+                        gameBoard[i][k] = "X";
+                        gameBoard[i][++k] = "X";
+                        gameBoard[i][--j] = "X";
+                        break;
+                    }
+                }
+
+                if (gameBoard[i][j - 1].equals("X") && gameBoard[i][j + 1].equals("X"))
+                    continue;
+                if (gameBoard[i][j - 2].equals("X") && gameBoard[i][j + 2].equals("X"))
+                    continue;
+                int rand_check = rand.nextInt(2);
+                if (rand_check == 1) {
+                    for (int k = j; k <= j + 2; k++)
+                        gameBoard[i][k] = "X";
+                    break;
+                } else {
+                    for (int k = j; k >= j - 2; k--)
+                        gameBoard[i][k] = "X";
+                    break;
                 }
             }
         }
-        i = rand.nextInt(6);
-        j = rand.nextInt(6);
-        //ship length of 2
-        for (int k = 0; k < 3; k++) {
-            int decider = (int) (Math.random() * 2 + 1);
-            if (decider == 1) {
-                if (i <= 4 && !gameBoard[i + 1][j].equals("X")) {
-                    i++;
-                    gameBoard[i][j] = "X";
-                } else if (i >= 1 && !gameBoard[i - 1][j].equals("X")) {
-                    i--;
-                    gameBoard[i][j] = "X";
-                } else {
+        //ship length 2
+        while (true) {
+            int direction = rand.nextInt(2);
+            if (direction == 0) { //vertical
+                if (gameBoard[i][j].equals("X")) {
                     i = rand.nextInt(6);
                     j = rand.nextInt(6);
-                    k--;
+                    continue;
+                }
+                if (i == 5) {
+                    if (gameBoard[i - 1][j].equals("X"))
+                        continue;
+
+                    for (int k = i; k > i - 2; k--)
+                        gameBoard[k][j] = "X";
+                    break;
+                }
+                if (i == 0) {
+                    if (gameBoard[i + 1][j].equals("X"))
+                        continue;
+
+                    for (int k = i; k < i + 2; k++)
+                        gameBoard[k][j] = "X";
+                    break;
+                }
+                if (i == 4) {
+                    if (gameBoard[i - 1][j].equals("X") && gameBoard[i + 1][j].equals("X"))
+                        continue;
+                    gameBoard[i][j] = "X";
+                    if (gameBoard[i - 1][j].equals("X"))
+                        gameBoard[++i][j] = "X";
+                    else
+                        gameBoard[--i][j] = "X";
+                    break;
+                }
+                if (i == 1) {
+                    if (gameBoard[i + 1][j].equals("X") && gameBoard[i - 1][j].equals("X"))
+                        continue;
+                    gameBoard[i][j] = "X";
+                    if (gameBoard[i - 1][j].equals("X"))
+                        gameBoard[++i][j] = "X";
+                    else
+                        gameBoard[--i][j] = "X";
+                    break;
                 }
 
+                if (gameBoard[i - 1][j].equals("X") && gameBoard[i + 1][j].equals("X"))
+                    continue;
+                gameBoard[i][j] = "X";
+
+                if (gameBoard[i - 1][j].equals("X"))
+                    gameBoard[++i][j] = "X";
+                else
+                    gameBoard[--i][j] = "X";
+                break;
+
             } else {
-                if (j <= 4 && !gameBoard[i][j + 1].equals("X")) {
-                    j++;
-                    gameBoard[i][j] = "X";
-                } else if (j >= 1 && !gameBoard[i][j - 1].equals("X")) {
-                    j--;
-                    gameBoard[i][j] = "X";
-                } else {
+                //horizontal
+                if (gameBoard[i][j].equals("X")) {
                     i = rand.nextInt(6);
                     j = rand.nextInt(6);
-                    k--;
+                    continue;
                 }
+                if (j == 5) {
+                    if (gameBoard[i][j - 1].equals("X"))
+                        continue;
+
+                    for (int k = j; k > j - 2; k--)
+                        gameBoard[i][k] = "X";
+                    break;
+                }
+                if (j == 0) {
+                    if (gameBoard[i][j + 1].equals("X"))
+                        continue;
+
+                    for (int k = j; k < j + 2; k++)
+                        gameBoard[i][k] = "X";
+                    break;
+                }
+                if (j == 4) {
+                    if (gameBoard[i][j - 1].equals("X") && gameBoard[i][j + 1].equals("X"))
+                        continue;
+                    gameBoard[i][j] = "X";
+
+                    if (gameBoard[i][j - 1].equals("X"))
+                        gameBoard[i][++j] = "X";
+                    else
+                        gameBoard[i][--j] = "X";
+                    break;
+                }
+                if (j == 1) {
+                    if (gameBoard[i][j + 1].equals("X") && gameBoard[i][j - 1].equals("X"))
+                        continue;
+                    gameBoard[i][j] = "X";
+
+                    if (gameBoard[i][j - 1].equals("X"))
+                        gameBoard[i][++j] = "X";
+                    else
+                        gameBoard[i][--j] = "X";
+                    break;
+                }
+
+                if (gameBoard[i][j - 1].equals("X") && gameBoard[i][j + 1].equals("X"))
+                    continue;
+                gameBoard[i][j] = "X";
+
+                if (gameBoard[i][j - 1].equals("X"))
+                    gameBoard[i][++j] = "X";
+                else
+                    gameBoard[i][--j] = "X";
+                break;
             }
+        }
+        //ship length 1
+        while(true){
+            if (gameBoard[i][j].equals("X")) {
+                i = rand.nextInt(6);
+                j = rand.nextInt(6);
+                continue;
+            }
+            
+            gameBoard[i][j] = "X";
+            break;
         }
         return gameBoard;
     }
