@@ -1,3 +1,4 @@
+(Note, you'll need to have docker installed)
 Clone the git repo.
 Navigate to the battleship folder (in terminal) 
 docker build -t battleship . 
