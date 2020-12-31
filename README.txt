@@ -51,7 +51,9 @@ H
 H <-- Computer knows not to go down now (thanks to the T) and instead travels upward, marks a hit, followed by a miss. 
 T
 O
-Now the ship is sunk; however, the computer is not yet finished. Everytime the computer misses, it travels back to the first known hit. Since it just missed the position at the very top, the computer has to return to the original hit. From there, it knows it cannot travel down (because of the T) so it tries to go up. However, the computer knows it's been there before, so it marks it as a T. 
+Now the ship is sunk; however, the computer is not yet finished. Everytime the computer misses, it travels back to the first known hit. 
+Since it just missed the position at the very top, the computer has to return to the original hit. 
+From there, it knows it cannot travel down (because of the T) so it tries to go up. However, the computer knows it's been there before, so it marks it as a T. 
 O
 T 
 H <-- 
