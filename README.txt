@@ -64,8 +64,7 @@ Now, because the computer has nowhere to go (up/down) it knows the ship has been
 There are more elegant ways of executing this algorithm (I'm sure), but this was what I'd imagined in my head. It made perfect sense to me, and so I went with it. 
 
 Recent fixes & improvements:
-  Updated AI 12/28/20
-  Updated random ship generator 12/30/20
-      
+  Updated AI 12/28/20 (Computer now recognizes the orientation of a ship (horizontal/vertical) after a maximum of two hits). 
+  Updated random ship generator 12/30/20 (All ships have a consistent size (XXX XX X) <-- three ships, all of varying lengths)
 
 ~ Rakan Kandah
