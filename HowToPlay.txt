@@ -1,2 +1,2 @@
-If you're running linux, navigate to the run.sh file, copy and paste it into your terminal.
-Once the installations are complete, enjoy! 
+If you are on a mac/linux, copy and paste the runonmac.sh file into your terminal. 
+Unfortunately, you'll need to have docker installed, but I'm trying to find a workaround!
