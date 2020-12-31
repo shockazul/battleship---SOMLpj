@@ -33,7 +33,7 @@ To fix this issue, I developed a marker-like system for the computer. The comput
 constantly returning to that spot. 
 The process is demonstrated below.
 X       
-X <-- Computer lands here (Markks as first hit)
+X <-- Computer lands here (Marks as first hit)
 X
 
 X 
