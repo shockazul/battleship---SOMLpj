@@ -1,5 +1,5 @@
 # Battleship
-Battleship
+PLEASE NOTE: EVERYTHING (JAVA CODE, BASH SCRIPTS, ETC.) IS A WORK IN PROGRESS. I AM CONSTANTLY UPDATING THIS REPO TO FIX MISTAKES, AND IMPROVE EFFICIENCY/ CLARITY. 
 
 This Battleship game, developed by Rakan Kandah, was written in Java as a solo project. 
 The AI's algorithm is original, along with everything else in the code. 
