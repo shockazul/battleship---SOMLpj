@@ -1,2 +1,23 @@
-If you are on a mac/linux, copy and paste the runonmac.sh file into your terminal. 
-Unfortunately, you'll need to have docker installed, but I'm trying to find a workaround!
+You'll need to have docker installed to play the game.
+
+MAC OS Link: https://hub.docker.com/editions/community/docker-ce-desktop-mac/
+
+LINUX Link: https://docs.docker.com/engine/install/ubuntu/
+
+After installing docker, navigate to the run.sh (linux) or run_on_mac.sh (mac). 
+Copy the contents of the .sh file. 
+Now type these quick commands into your terminal!
+
+cd Desktop
+nano play_time.sh (you can call it anything you'd like, but keep the .sh at the end!)
+paste the contents of the run/run_on_mac.sh into the new file you made. 
+Hit ctrl x
+Hit y
+Hit enter 
+Type: chmod +x play_time.sh (or whatever you called it)
+Now simply type ./play_time.sh (or whatever you called it)
+Wait for the download to finish (it may take a while on mac)
+Now enjoy! 
+
+
+
