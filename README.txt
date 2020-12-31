@@ -11,9 +11,9 @@ The goal of this independent project was to develop a natural algorithm for the 
 
 To start, the AI searches the board by selecting random positions. Once a ship is located, it follows this procedure: DOWN, UP, LEFT, RIGHT; this process will continue until the ship is sunk or the computer misses. 
 If a ship of length 3 is vertical, and the computer finds the first position (top), then it will have sunk the entire ship in one turn (best and easiest case because the computer always goes DOWN first.)
-Below is an example of the procedure. X represents an unmarked ship. H represents a hit; and O represents a miss.
+Below is an example of the procedure. X represents an unmarked ship. H represents a hit and O represents a miss.
 
-X <--Computer starts here (marks as hit)
+X <-- Computer starts here (marks as hit)
 X
 X
 
@@ -22,28 +22,34 @@ H * Computer marks as hit; goes down
 H * Computer marks as hit; goes down
 O * Miss
 
-However, the computer is not always so lucky. Sometimes, it'll randomly select the middle position (as shown below).
+*Note, when the computer misses, it returns to the first known hit.* (This will be further explained in the next example)
+
+
+
+In the first example, the computer was lucky. It sank the entire ship in one turn; however, this is not always the case. 
+Sometimes, it'll select the middle position instead (as shown below).
 
 X 
 X <--
 X 
 
 This is when the algorithm becomes a bit more complicated. The computer, by default, goes down first. This means it misses the top portion of the ship and only hits the bottom. 
-To fix this issue, I developed a marker-like system for the computer. The computer marks a hit position as T if it's traveled there more than once. This will prevent it from
-constantly returning to that spot. 
+To fix this issue, I developed a marker-like system for the computer. The computer marks a hit position as "T" if it's traveled there more than once. This will prevent it from
+constantly returning to the same spot. 
 The process is demonstrated below.
+
 X       
 X <-- Computer lands here (Marks as first hit)
 X
 
 X 
-H <--Computer goes down
-H (Marked hit then goes down)
-O (Marked miss, returns to the original location (first hit)); *Note, when the computer misses, it returns to the first known hit.*
+H <-- Computer goes down
+H * Computer marks as hit; goes down
+O * Computer marks as miss; returns to first known hit
 
 X 
 H <-- Computer goes down again 
-T (Computer has been here before; MARK AS T; return to first known hit)
+T * Computer has been here before; MARK POSITION AS T; return to first known hit
 O
 
 O
@@ -51,15 +57,19 @@ H
 H <-- Computer knows not to go down now (thanks to the T) and instead travels upward, marks a hit, followed by a miss. 
 T
 O
-Now the ship is sunk; however, the computer is not yet finished. Everytime the computer misses, it travels back to the first known hit. 
+
+Now the ship is sunk; however, the computer is not yet finished. Every time the computer misses, it travels back to the first known hit. 
 Since it just missed the position at the very top, the computer has to return to the original hit. 
-From there, it knows it cannot travel down (because of the T) so it tries to go up. However, the computer knows it's been there before, so it marks it as a T. 
+From there, the computer knows it cannot travel down (because of the T) so it tries to go up. However, the computer knows it's been up before, so it marks that
+position as a "T". Once the bottom and top are marked as "T" the computer has nowhere left to go (shown below). 
+
 O
 T 
-H <-- 
+H <-- Computer cannot go down or up (there is no need to check left/right because this is a vertically oriented ship) so it knows its work is complete.
 T
 O
-Now, because the computer has nowhere to go (up/down) it knows the ship has been sunk. It is now safe for the computer to move on and select a new random position.
+
+Now that the ship is sunk, it is safe for the computer to move on.
 
 There are more elegant ways of executing this algorithm (I'm sure), but this was what I'd imagined in my head. It made perfect sense to me, and so I went with it. 
 
