@@ -13,7 +13,6 @@ sudo groupadd docker
 sudo usermod -aG docker $(whoami)
 sudo service docker start
 sudo docker run hello-world
-sudo service docker start
 
 docker build -t battleship .
 clear
