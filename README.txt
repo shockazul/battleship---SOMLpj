@@ -2,7 +2,8 @@
 PLEASE NOTE: EVERYTHING (JAVA CODE, BASH SCRIPTS, ETC.) IS A WORK IN PROGRESS. I AM CONSTANTLY UPDATING THIS REPO TO FIX MISTAKES, AND IMPROVE EFFICIENCY/ CLARITY. 
 
 This Battleship game, developed by Rakan Kandah, was written in Java as a solo project. 
-The AI's algorithm is original, along with everything else in the code. 
+The AI's algorithm is original, along with everything else in the code. In more recent updates, I've added a Dockerfile & bash scripts to make running the game on another 
+machine easier. It's not perfect yet (I'm still learning how to use these technologies), but progress is being made! 
 
 How the AI works: 
 Getting a computer to think like a human is hard (and that's an understatement!). 
