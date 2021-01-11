@@ -1,3 +1,7 @@
+*WORK IN PROGRESS*
+I'm currently deploying this game in the cloud. That'll make it so it's MUCH easier to play. 
+
+* * * 
 You'll need to have docker installed to play the game.
 
 MAC OS Link: https://hub.docker.com/editions/community/docker-ce-desktop-mac/
