@@ -77,5 +77,10 @@ There are more elegant ways of executing this algorithm (I'm sure), but this was
 Recent fixes & improvements:
   Updated AI 12/28/20 (Computer now recognizes the orientation of a ship (horizontal/vertical) after a maximum of two hits). 
   Updated random ship generator 12/30/20 (All ships have a consistent size (XXX XX X) <-- three ships, all of varying lengths)
+  
+ NEED TO: 
+  Finish deploying the game in the cloud (AWS ; EC2) so it's easier for others to try out. 
+  Fix ship placement to prevent sticking (sometimes the ships all line up in a row/column - I need to add padding) 
+
 
 ~ Rakan Kandah
