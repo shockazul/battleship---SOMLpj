@@ -50,7 +50,7 @@ O * Computer marks as miss; returns to first known hit
 
 X 
 H <-- Computer goes down again 
-T * Computer has been here before; MARK POSITION AS T; return to first known hit
+T * Computer has been here before; MARK POSITION AS T; return to first known hit (Note this does not waste a turn!)
 O
 
 O
@@ -64,6 +64,7 @@ Since it just missed the position at the very top, the computer has to return to
 From there, the computer knows it cannot travel down (because of the T) so it tries to go up. However, the computer knows it's been up before, so it marks that
 position as a "T". Once the bottom and top are marked as "T" the computer has nowhere left to go (shown below). 
 
+
 O
 T 
 H <-- Computer cannot go down or up (there is no need to check left/right because this is a vertically oriented ship) so it knows its work is complete.
@@ -71,16 +72,17 @@ T
 O
 
 Now that the ship is sunk, it is safe for the computer to move on.
+The process is the same for horizontally oriented ships. 
 
-There are more elegant ways of executing this algorithm (I'm sure), but this was what I'd imagined in my head. It made perfect sense to me, and so I went with it. 
+There are more elegant ways of executing this algorithm (I'm sure), but this was what I'd imagined in my head. It made perfect sense to me, and so I went with it, but it was not an easy algorithim to implement. I had to think of all the different possibilities to make the computer play the game in as natural a manner as possible. 
 
 Recent fixes & improvements:
   Updated AI 12/28/20 (Computer now recognizes the orientation of a ship (horizontal/vertical) after a maximum of two hits). 
   Updated random ship generator 12/30/20 (All ships have a consistent size (XXX XX X) <-- three ships, all of varying lengths)
   
  NEED TO: 
-  Finish deploying the game in the cloud (AWS ; EC2) so it's easier for others to try out. 
-  Fix ship placement to prevent sticking (sometimes the ships all line up in a row/column - I need to add padding) 
+  Finish deploying the game in the cloud (AWS ; EC2) so it's easier for others to try out.  
+  Fix ship placement to prevent sticking (sometimes the ships all line up in a row/column EX: (XXX)(XX)(X) - three ships merged together) 
 
 
 ~ Rakan Kandah
