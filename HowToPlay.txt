@@ -23,5 +23,5 @@ Now simply type ./play_time.sh (or whatever you called it)
 Wait for the download to finish (it may take a while on mac)
 Now enjoy! 
 
-
+Note: If you already have java installed on your machine, it may be easier to just clone the repo and run the game. Again, I'm still working on a way to make this game easier to play. 
 
