@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,25 +8,30 @@ public class Battleship {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_BLUE = "\u001B[34m";
+    private static int user_count, computer_count, ship_count;
 
 
     public static void main(String[] args) throws InterruptedException {
-        while (true) {
+        
             Battleship battleship = new Battleship();
             System.out.print("\t\t\t\t\t\t\t\t\t\t");
             System.out.print("Enter your name: ");
             String userName = scanner.nextLine();
             System.out.print("\t\t\t\t\t\t\t\t\t\t");
-            System.out.print("This is " + userName + "'s board. X's represent your ships");
-            System.out.println();
-
-            battleship.playingTheGame();
-            System.out.println("Thanks for playing!\nHit 0 to quit, or 1 to play again.");
-            int val = scanner.nextInt();
-            if (val == 0)
-                break;
-        }
+            System.out.print("This is " + userName + "'s board. X's represent your ships.\n\t\t\t\t\t\t\t\t\t\tYou can use this board to track the computer's movements.");
+            while (true) {    
+                user_count = 0;
+                computer_count = 0;
+                ship_count = 0;    
+                System.out.println();
+                battleship.playingTheGame();
+                System.out.println("\nThanks for playing!\nHit 0 to quit, or 1 to play again.");
+                int val = scanner.nextInt();
+                if (val == 0)
+                    break;
+            }
     }
 
     public String[][] creatingBoard() {
@@ -344,7 +350,7 @@ public class Battleship {
         System.out.println();
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(ANSI_BLUE + "[ " + ANSI_RESET + matrix[i][j] + ANSI_BLUE + " ]" + ANSI_RESET);
+                System.out.print(ANSI_BLUE + "[ " + ANSI_RESET + (matrix[i][j]== "X" ? ANSI_GREEN + matrix[i][j] + ANSI_RESET : matrix[i][j]) + ANSI_BLUE + " ]" + ANSI_RESET);
                 if (j == matrix[i].length - 1) System.out.println();
             }
         }
@@ -388,18 +394,36 @@ public class Battleship {
                 System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tComputer Wins");
                 displayUserBoard(computerVisible);
                 System.out.println("Computer's Board");
+                for(int ii = 0; ii  < computerBoard.length; ii++){
+                    for(int jj = 0; jj < computerBoard[ii].length; jj++){
+                        if(computerBoard[ii][jj] != userCopy[ii][jj])
+                            ship_count++;
+                    }
+                }
                 winBoard(computerBoard);
                 winBoard(userVisible);
                 System.out.println(ANSI_RED + "You lose!" + ANSI_RESET);
+                if(ship_count == 1)
+                    System.out.println("You only needed one more hit! :( ");
+                else if(ship_count >= 3)  
+                    System.out.println("You needed " + ship_count + " more hits! :(\n");
+                else
+                    System.out.println("You only needed " + ship_count + " more hits! :(\n");
+                    
+                System.out.println("Stats:");
+                System.out.println("\tYour missed moves count: " + user_count);
+                System.out.println("\tComputer's missed moves count: " + computer_count);
                 break;
             }
-            if (Arrays.deepEquals(computerBoard, userCopy)) { //checking if the computer wins
+            if (Arrays.deepEquals(computerBoard, userCopy)) { //checking if the user wins
                 System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                 winBoard(userVisible);
                 System.out.println(ANSI_CYAN + "You win!" + ANSI_RESET);
+                System.out.println("Stats:");
+                System.out.println("\tYour missed moves count: " + user_count);
+                System.out.println("\tComputer's missed moves count: " + computer_count);
                 break;
             }
-
             if (playerBoard[i][j].equals("X") | internalProcessing[i][j].equals("H") | internalProcessing[i][j].equals("T")) {
                 computerVisible[i][j] = (ANSI_RED + "H" + ANSI_RESET);
                 computerCopy[i][j] = "X";
@@ -455,6 +479,7 @@ public class Battleship {
             } else {
                 internalProcessing[i][j] = "O";
                 computerVisible[i][j] = "O";
+                computer_count++;
                 if (internalProcessing[v][v2].equals("H")) { //set back to last known HIT position
                     i = v;
                     j = v2;
@@ -468,34 +493,46 @@ public class Battleship {
             }
             int val = 0;
             int val2 = 0;
-            boolean checker;
-            do {
+            boolean checker = true;
+            while(checker){
                 displayBoard(userVisible);
-                System.out.println("Enter the row number & column number: ");
-                val = scanner.nextInt();
-                val2 = scanner.nextInt();
+                System.out.println("Type the row number & column number: ");
+                try{
+                    val = scanner.nextInt();
+                    val2 = scanner.nextInt();
+                }
+                catch(InputMismatchException ime){
+                    System.out.println("Numbers only! :) ");
+                    scanner = new Scanner(System.in);
+                    checker = true;
+                    continue;
+                }
+                catch(Exception ex){
+                    System.out.println("Uh-oh, something went wrong! Please try again :)");
+                    scanner = new Scanner(System.in);
+                    checker = true;
+                    continue;
+                }
                 if (val > 5 | val2 > 5) {
                     System.out.println(ANSI_RED + "The value must be between 0 and 5 (inclusive)" + ANSI_RESET);
                     checker = true;
                     continue;
                 }
-                if (userVisible[val][val2].equals("O") | userVisible[val][val2].equals("H")) {
+                if (userVisible[val][val2].equals("O") | userCopy[val][val2].equals("X")) {
                     System.out.println(ANSI_RED + "You have already picked this position." + ANSI_RESET);
                     checker = true;
                     continue;
                 }
                 if (computerBoard[val][val2].equals("X")) {
                     checker = false;
-                    System.out.println("DIRECT HIT!");
                     userCopy[val][val2] = "X";
                     userVisible[val][val2] = ANSI_RED + "H" + ANSI_RESET;
                 } else {
                     checker = false;
                     userVisible[val][val2] = "O";
+                    user_count++;
                 }
-
-
-            } while (checker || computerBoard[val][val2].equals("X") && !Arrays.deepEquals(computerBoard, userCopy));
+            }
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
             System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tComputer's Turn");
 
