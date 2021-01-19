@@ -12,9 +12,7 @@ public class Battleship {
     public static final String ANSI_BLUE = "\u001B[34m";
     private static int user_count, computer_count, ship_count;
 
-
     public static void main(String[] args) throws InterruptedException {
-        
             Battleship battleship = new Battleship();
             System.out.print("\t\t\t\t\t\t\t\t\t\t");
             System.out.print("Enter your name: ");
@@ -35,7 +33,9 @@ public class Battleship {
     }
 
     public String[][] creatingBoard() {
-        String[][] gameBoard = {{"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}};
+        String[][] gameBoard = {{"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"},
+            {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"}, {"~", "~", "~", "~", "~", "~"},
+                {"~", "~", "~", "~", "~", "~"}};
         Random rand = new Random();
         int i = rand.nextInt(6);
         int j = rand.nextInt(6);
