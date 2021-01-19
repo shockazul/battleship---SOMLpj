@@ -327,7 +327,42 @@ public class Battleship {
                 j = rand.nextInt(6);
                 continue;
             }
-            
+            if (i == 5) 
+                if (gameBoard[i - 1][j].equals("X")){
+                    i = rand.nextInt(6);
+                    continue;
+                }
+            if (i == 0)
+                if (gameBoard[i + 1][j].equals("X")){
+                    i = rand.nextInt(6);
+                    continue;
+                }
+            if (i < 5 && gameBoard[i + 1][j].equals("X")){
+                i = rand.nextInt(6);
+                continue;
+            }   
+            if (i > 0 && gameBoard[i - 1][j].equals("X")){
+                i = rand.nextInt(6);
+                continue;
+            }
+            if (j == 5) 
+                if (gameBoard[i][j-1].equals("X")){
+                    j = rand.nextInt(6);
+                    continue;
+                }
+            if (j == 0)
+                if (gameBoard[i][j+1].equals("X")){
+                    j = rand.nextInt(6);
+                    continue;
+                }
+            if (j < 5 && gameBoard[i][j+1].equals("X")){
+                j = rand.nextInt(6);
+                continue;
+            }
+            if (j > 0 && gameBoard[i][j-1].equals("X")){
+                j = rand.nextInt(6);
+                continue;
+            }
             gameBoard[i][j] = "X";
             break;
         }
