@@ -216,25 +216,61 @@ public class Battleship {
                     j = rand.nextInt(6);
                     continue;
                 }
-                if (i == 5) {
-                    if (gameBoard[i - 1][j].equals("X"))
+                //ensure j pos is good 
+                if (j == 5)
+                    if (gameBoard[i][j - 1].equals("X")){
+                        j = rand.nextInt(6);
                         continue;
+                    }
+                if (j == 0) 
+                    if (gameBoard[i][j+1].equals("X")){
+                        j = rand.nextInt(6);
+                        continue;
+                    }
+                if (j == 4) 
+                    if (gameBoard[i][j-1].equals("X") && gameBoard[i][j+1].equals("X")){
+                        j = rand.nextInt(6);
+                        continue;
+                    }
+                if (j == 1)
+                    if (gameBoard[i][j+1].equals("X") && gameBoard[i][j-1].equals("X")){
+                        j = rand.nextInt(6);
+                        continue;
+                    }
+                if (j > 0 && gameBoard[i][j-1].equals("X")){
+                    j = rand.nextInt(6);
+                    continue;
+                }
+                if (j < 5 && gameBoard[i][j+1].equals("X")){
+                    j = rand.nextInt(6);
+                    continue;
+                }
+                //now j is good, ensure i is good & begin ship placement 
+                if (i == 5) {
+                    if (gameBoard[i - 1][j].equals("X")){
+                        i = rand.nextInt(6);
+                        continue;
+                    }
 
                     for (int k = i; k > i - 2; k--)
                         gameBoard[k][j] = "X";
                     break;
                 }
                 if (i == 0) {
-                    if (gameBoard[i + 1][j].equals("X"))
+                    if (gameBoard[i + 1][j].equals("X")){
+                        i = rand.nextInt(6);
                         continue;
+                    }
 
                     for (int k = i; k < i + 2; k++)
                         gameBoard[k][j] = "X";
                     break;
                 }
                 if (i == 4) {
-                    if (gameBoard[i - 1][j].equals("X") && gameBoard[i + 1][j].equals("X"))
+                    if (gameBoard[i - 1][j].equals("X") && gameBoard[i + 1][j].equals("X")){
+                        i = rand.nextInt(6);
                         continue;
+                    }
                     gameBoard[i][j] = "X";
                     if (gameBoard[i - 1][j].equals("X"))
                         gameBoard[++i][j] = "X";
@@ -243,8 +279,10 @@ public class Battleship {
                     break;
                 }
                 if (i == 1) {
-                    if (gameBoard[i + 1][j].equals("X") && gameBoard[i - 1][j].equals("X"))
+                    if (gameBoard[i + 1][j].equals("X") && gameBoard[i - 1][j].equals("X")){
+                        i = rand.nextInt(6);
                         continue;
+                    }
                     gameBoard[i][j] = "X";
                     if (gameBoard[i - 1][j].equals("X"))
                         gameBoard[++i][j] = "X";
@@ -253,8 +291,11 @@ public class Battleship {
                     break;
                 }
 
-                if (gameBoard[i - 1][j].equals("X") && gameBoard[i + 1][j].equals("X"))
+                if (gameBoard[i - 1][j].equals("X") && gameBoard[i + 1][j].equals("X")){
+                    i = rand.nextInt(6);
                     continue;
+                }
+                
                 gameBoard[i][j] = "X";
 
                 if (gameBoard[i - 1][j].equals("X"))
@@ -270,25 +311,61 @@ public class Battleship {
                     j = rand.nextInt(6);
                     continue;
                 }
-                if (j == 5) {
-                    if (gameBoard[i][j - 1].equals("X"))
+            //ensure is i pos is good
+                if (i == 5)
+                    if (gameBoard[i-1][j].equals("X")){
+                        i = rand.nextInt(6);
                         continue;
+                    }
+                if (i == 0) 
+                    if (gameBoard[i+1][j].equals("X")){
+                        i = rand.nextInt(6);
+                        continue;
+                    }
+                if (i == 4) 
+                    if (gameBoard[i-1][j].equals("X") && gameBoard[i+1][j].equals("X")){
+                        i = rand.nextInt(6);
+                        continue;
+                    }
+                if (i == 1)
+                    if (gameBoard[i+1][j].equals("X") && gameBoard[i-1][j].equals("X")){
+                        i = rand.nextInt(6);
+                        continue;
+                    }
+                if (i > 0 && gameBoard[i-1][1].equals("X")){
+                    i = rand.nextInt(6);
+                    continue;
+                }
+                if (i < 5 && gameBoard[i+1][j].equals("X")){
+                    i = rand.nextInt(6);
+                    continue;
+                }
+            //now that i is good, ensure j is good and begin ship placement
+                if (j == 5) {
+                    if (gameBoard[i][j - 1].equals("X")){
+                        j = rand.nextInt(6);
+                        continue;
+                    }
 
                     for (int k = j; k > j - 2; k--)
                         gameBoard[i][k] = "X";
                     break;
                 }
                 if (j == 0) {
-                    if (gameBoard[i][j + 1].equals("X"))
+                    if (gameBoard[i][j + 1].equals("X")){
+                        j = rand.nextInt(6);
                         continue;
+                    }
 
                     for (int k = j; k < j + 2; k++)
                         gameBoard[i][k] = "X";
                     break;
                 }
                 if (j == 4) {
-                    if (gameBoard[i][j - 1].equals("X") && gameBoard[i][j + 1].equals("X"))
+                    if (gameBoard[i][j - 1].equals("X") && gameBoard[i][j + 1].equals("X")){
+                        j = rand.nextInt(6);
                         continue;
+                    }
                     gameBoard[i][j] = "X";
 
                     if (gameBoard[i][j - 1].equals("X"))
@@ -298,8 +375,10 @@ public class Battleship {
                     break;
                 }
                 if (j == 1) {
-                    if (gameBoard[i][j + 1].equals("X") && gameBoard[i][j - 1].equals("X"))
+                    if (gameBoard[i][j + 1].equals("X") && gameBoard[i][j - 1].equals("X")){
+                        j = rand.nextInt(6);
                         continue;
+                    }
                     gameBoard[i][j] = "X";
 
                     if (gameBoard[i][j - 1].equals("X"))
@@ -309,8 +388,10 @@ public class Battleship {
                     break;
                 }
 
-                if (gameBoard[i][j - 1].equals("X") && gameBoard[i][j + 1].equals("X"))
+                if (gameBoard[i][j - 1].equals("X") && gameBoard[i][j + 1].equals("X")){
+                    j = rand.nextInt(6);
                     continue;
+                }
                 gameBoard[i][j] = "X";
 
                 if (gameBoard[i][j - 1].equals("X"))
