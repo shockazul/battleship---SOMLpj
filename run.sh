@@ -3,7 +3,12 @@ sudo apt update
 sudo apt upgrade
 sudo apt install git
 
-git clone https://github.com/SOMLpj/Battleship.git
+if [ -d ./battleship ]
+then
+    echo "REPO has already been cloned..."
+else
+    git clone https://github.com/SOMLpj/Battleship.git
+fi
 
 cd battleship
 
