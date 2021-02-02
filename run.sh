@@ -3,14 +3,14 @@ sudo apt update
 sudo apt upgrade
 sudo apt install git
 
-if [ -d ./battleship ]
+if [ -d ./Battleship ]
 then
     echo "REPO has already been cloned..."
 else
     git clone https://github.com/SOMLpj/Battleship.git
 fi
 
-cd battleship
+cd Battleship
 
 sudo apt-get update -y && sudo apt-get install -y linux-image-extra-$(uname -r)
 sudo apt-get install docker-engine -y
