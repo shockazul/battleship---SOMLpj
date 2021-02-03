@@ -1,7 +1,6 @@
 # ! /bin/bash
 echo "Installing some stuff... This may take a minute :/"
 sudo apt update 
-echo "Don't worry, we're still here!"
 sudo apt upgrade 
 command -v git > /dev/null
 if [ $? -eq 0 ] 
