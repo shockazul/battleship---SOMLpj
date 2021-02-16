@@ -84,5 +84,4 @@ Recent fixes & improvements:
   Finish deploying the game in the cloud (AWS ; EC2) so it's easier for others to try out.  
   Fix ship placement to prevent sticking (sometimes the ships all line up in a row/column EX: (XXX)(XX)(X) - three ships merged together) 
 
-
 ~ Rakan Kandah
