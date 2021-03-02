@@ -16,21 +16,22 @@ If a ship of length 3 is vertical, and the computer finds the first position (to
 This is the best and easiest case because the computer always goes DOWN first. By the time it makes its first miss, the ship will already be destroyed. 
 
 Below is an example of the procedure. X represents an unmarked ship. H represents a hit and O represents a miss.
-`X` <-- Computer starts here (marks as hit)
 
-`X
+`X <-- Computer starts here (marks as hit)
 
 X
 
+X`
 
-H `<-- Computer goes down
 
-`H` * Computer marks as hit; goes down
+`H <-- Computer goes down
 
-`H` * Computer marks as hit; goes down
+H * Computer marks as hit; goes down
 
-`O `* Miss
+H * Computer marks as hit; goes down
 
+O * Miss
+`
 ***Note, when the computer misses, it returns to the first known hit.* (This will be further explained in the next example)***
 
 In the first example, the computer was lucky. It sank the entire ship in one turn; however, this is not always the case. 
