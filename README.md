@@ -18,8 +18,12 @@ This is the best and easiest case because the computer always goes DOWN first. B
 Below is an example of the procedure. X represents an unmarked ship. H represents a hit and O represents a miss.
 
 `X
+
 X
+
 X`
+
+
 `X <-- Computer starts here (marks as hit)
 
 X
