@@ -33,7 +33,7 @@ Below is an example of the procedure. `X` represents an unmarked ship. `H` repre
 
 `O * Miss`
 
-***Note, when the computer misses, it returns to the first known hit.* (This will be further explained in the next example)***
+***Note, when the computer misses, it returns to the first known hit. (This will be further explained in the next example)***
 
 In the first example, the computer was lucky. It sank the entire ship in one turn; however, this is not always the case. 
 
