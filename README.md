@@ -49,7 +49,7 @@ This is when the algorithm becomes a bit more complicated. The computer, by defa
 
 This means it misses the top portion of the ship and only hits the bottom. 
 
-To fix this issue, I developed a marker-like system for the computer. The computer marks a hit position as "T" if it's traveled there more than once. This will prevent it from constantly returning to the same spot - instead allowing it to continue searching the area. The process is demonstrated below.
+To fix this issue, I developed a marker-like system for the computer. The computer marks a hit position as `T` if it's traveled there more than once. This will prevent it from constantly returning to the same spot - instead allowing it to continue searching the area. The process is demonstrated below.
 
 `X` 
 
@@ -75,7 +75,7 @@ To fix this issue, I developed a marker-like system for the computer. The comput
 
 `H`
 
-`H <-- Computer knows not to go down now (thanks to the T) and instead travels upward, marks a hit, followed by a miss.`
+`H <-- Computer knows not to go down now (thanks to the `T`) and instead travels upward, marks a hit, followed by a miss.`
 
 `T`
 
@@ -85,8 +85,8 @@ Now the ship is sunk; however, the computer is not yet finished. Every time the 
 
 Since we just missed the position at the very top, the computer has to return to the original hit. 
 
-From there, the computer knows it cannot travel down (because of the T) so it tries to go up. However, the computer knows it's been up before, so it marks that
-position as a "T". Once the bottom and top are marked as "T" the computer has nowhere left to go (shown below). 
+From there, the computer knows it cannot travel down (because of the `T`) so it tries to go up. However, the computer knows it's been up before, so it marks that
+position as a `T`. Once the bottom and top are marked as `T` the computer has nowhere left to go (shown below). 
 
 `O`
 
@@ -107,11 +107,11 @@ There are more elegant ways of executing this algorithm, but this was the design
 Recent fixes & improvements:
   Updated AI 12/28/20 (Computer now recognizes the orientation of a ship (horizontal/vertical) after a maximum of two hits). 
   
-  Updated random ship generator 12/30/20 (All ships have a consistent size (XXX XX X) <-- three ships, all of varying lengths)
+  Updated random ship generator 12/30/20 (All ships have a consistent size `XXX`, `XX`, `X` <-- three ships, all of varying lengths)
   
  NEED TO: 
   Finish deploying the game in the cloud (AWS ; EC2) so it's easier for others to try out.  
   
-  Fix ship placement to prevent sticking (sometimes the ships all line up in a row/column EX: (XXX)(XX)(X) - three ships merged together) 
+  Fix ship placement to prevent sticking (sometimes the ships all line up in a row/column EX: `XXX XX X` - three ships merged together) 
 
 ~ Rakan Kandah
