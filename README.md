@@ -15,38 +15,38 @@ This process will continue until the ship is sunk or the computer misses.
 If a ship of length 3 is vertical, and the computer finds the first position (top), then it will have sunk the entire ship in one turn.
 This is the best and easiest case because the computer always goes DOWN first. By the time it makes its first miss, the ship will already be destroyed. 
 Below is an example of the procedure. X represents an unmarked ship. H represents a hit and O represents a miss.
-
+`
 X <-- Computer starts here (marks as hit)
 X
 X
-
-H <-- Computer goes down
-H * Computer marks as hit; goes down
-H * Computer marks as hit; goes down
-O * Miss
+`
+`H `<-- Computer goes down
+`H` * Computer marks as hit; goes down
+`H` * Computer marks as hit; goes down
+`O `* Miss
 
 *Note, when the computer misses, it returns to the first known hit.* (This will be further explained in the next example)
 
 In the first example, the computer was lucky. It sank the entire ship in one turn; however, this is not always the case. 
 Sometimes, it'll select the middle position instead (as shown below).
 
-X 
+`X 
 X <--
-X 
+X `
 
 This is when the algorithm becomes a bit more complicated. The computer, by default, goes down first. 
 This means it misses the top portion of the ship and only hits the bottom. 
 To fix this issue, I developed a marker-like system for the computer. The computer marks a hit position as "T" if it's traveled there more than once. 
 This will prevent it from constantly returning to the same spot. The process is demonstrated below.
 
-X       
-X <-- Computer lands here (Marks as first hit)
-X
+`X       
+X` <-- Computer lands here (Marks as first hit)
+`X`
 
-X 
-H <-- Computer goes down
-H * Computer marks as hit; goes down
-O * Computer marks as miss; returns to first known hit
+`X 
+H `<-- Computer goes down
+`H` * Computer marks as hit; goes down
+`O` * Computer marks as miss; returns to first known hit
 
 X 
 H <-- Computer goes down again 
