@@ -33,7 +33,7 @@ Below is an example of the procedure. `X` represents an unmarked ship. `H` repre
 
 `O * Miss`
 
-***Note, when the computer misses, it returns to the first known hit. (This will be further explained in the next example)***
+***Note, when the computer misses, it returns to the first known hit. (This will be further explained in the next example).***
 
 In the first example, the computer was lucky. It sank the entire ship in one turn; however, this is not always the case. 
 
@@ -50,14 +50,6 @@ This is when the algorithm becomes a bit more complicated. The computer, by defa
 This means it misses the top portion of the ship and only hits the bottom. 
 
 To fix this issue, I developed a marker-like system for the computer. The computer marks a hit position as "T" if it's traveled there more than once. This will prevent it from constantly returning to the same spot. The process is demonstrated below.
-
-`X`       
-
-`X <-- Computer lands here (Marks as first hit)`
-
-`X`
-
-***_______________________***
 
 `X` 
 
