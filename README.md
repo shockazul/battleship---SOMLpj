@@ -114,4 +114,4 @@ Recent fixes & improvements:
   
   Fix ship placement to prevent sticking (sometimes the ships all line up in a row/column EX: `XXX XX X` - three ships merged together) 
 
-~ Rakan Kandah
+`~ Rakan Kandah`
