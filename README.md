@@ -24,6 +24,7 @@ Below is an example of the procedure. `X` represents an unmarked ship. `H` repre
 `X`
 
 ***_______________________***
+
 `H <-- Computer goes down`
 
 `H * Computer marks as hit; goes down`
